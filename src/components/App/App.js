@@ -16,6 +16,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
+import Favorites from '../Favorites/Favorites';
+import RestaurantItem from '../RestaurantItem/RestaurantItem';
+import Search from '../Search/Search';
+import NewRestaurantForm from'../NewRestaurantForm/NewRestaurantForm'
 
 import './App.css';
 
@@ -38,6 +42,28 @@ class App extends Component {
               exact
               path="/about"
               component={AboutPage}
+            />
+              <Route
+              exact
+              path="/favorites"
+              component={Favorites}
+            />
+              <Route
+              exact
+              path="/item"
+              component={RestaurantItem}
+            />
+             />
+              <Route
+              exact
+              path="/search"
+              component={Search}
+            />
+              />
+              <Route
+              exact
+              path="/form"
+              component={NewRestaurantForm}
             />
             {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/home will show the UserPage if the user is logged in.

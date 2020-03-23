@@ -10,6 +10,12 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+const searchRouter = require('./routes/search.router');
+const favoritesRouter = require('./routes/favorites.router');
+const newRestaurantRouter = require('./routes/newrestaurant.router');
+const selectRouter = require('./routes/restaurant.item.router');
+
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -24,6 +30,10 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
+app.use('/search', searchRouter);
+app.use('/favorites', favoritesRouter);
+app.use('/form', newRestaurantRouter);
+app.use('/select', selectRouter);
 
 // Serve static files
 app.use(express.static('build'));
