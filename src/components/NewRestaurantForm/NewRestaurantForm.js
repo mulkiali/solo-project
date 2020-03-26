@@ -3,12 +3,16 @@ import { connect } from 'react-redux';
 
 class NewRestaurantForm extends Component {
 
-    //not finished
+ 
 
     state = {
         newRestaurant: {
             name: '',
             description: '',
+            street: '',
+            city: '',
+            state: '',
+            zip: 0,
         }
     }
 
@@ -31,17 +35,59 @@ class NewRestaurantForm extends Component {
             }
         });
     }
-  
-addRestaurant = (event) => {
+    handleStreetChange = (event) => {
+        console.log('event happened')
+        this.setState({
+            newRestaurant: {
+                ...this.state.newRestaurant,
+                street: event.target.value,
+            }
+        });
+    }
+    handleCityChange = (event) => {
+        console.log('event happened')
+        this.setState({
+            newRestaurant: {
+                ...this.state.newRestaurant,
+                city: event.target.value,
+            }
+        });
+    }
+    handleStateChange = (event) => {
+        console.log('event happened')
+        this.setState({
+            newRestaurant: {
+                ...this.state.newRestaurant,
+                state: event.target.value,
+            }
+        });
+    }
+
+    handleZipChange = (event) => {
+        console.log('event happened')
+        this.setState({
+            newRestaurant: {
+                ...this.state.newRestaurant,
+                zip: event.target.value,
+            }
+        });
+    }
+addRestaurant = event => {
     event.preventDefault();
+    console.log('help', this.state.newRestaurant.name)
     this.props.dispatch({ type: 'ADD_TO_LIST',  payload: this.state.newRestaurant})
     this.setState({
         newRestaurant: {
-            name: '',
-            description: ''
+            name: "",
+            description: "",
+            street: '',
+            city: '',
+            state: '',
+            zip: 0,
         }
     });
 }
+
 
 
 
@@ -49,26 +95,31 @@ render() {
     return (
       <div>
      <form>
-        <label for="street">Name:</label><br/>
+         <pre>{JSON.stringify(this.state)}</pre>
+        <label for="name">Name:</label><br/>
         <input type="text" value={this.state.newRestaurant.name} onChange={this.handleNameChange}/><br/>
 
-        <label for="street">Description:</label><br/>
+        <label for="description">Description:</label><br/>
         <input type="text" value={this.state.newRestaurant.description} onChange={this.handleDescriptionChange}/><br/>
-{/* 
+
+
         <label for="street">Street:</label><br/>
-        <input type="text" /><br/>
+        <input type="text" value={this.state.newRestaurant.street} onChange={this.handleStreetChange}/><br/>
+
 
         <label for="city">City:</label><br/>
-        <input type="text" />
-        <br/>
-
-        <label for="street">State:</label><br/>
-        <input type="text" /><br/>
+        <input type="text" value={this.state.newRestaurant.city} onChange={this.handleCityChange}/><br/>
 
 
-        <label for="street">Zip:</label><br/>
-        <input type="text" /><br/> */}
-        <input type="submit" onSubmit={this.addRestaurant}/>
+        <label for="state">State:</label><br/>
+        <input type="text" value={this.state.newRestaurant.state} onChange={this.handleStateChange}/><br/>
+
+
+        <label for="zip">Zip:</label><br/>
+        <input type="text" value={this.state.newRestaurant.zip} onChange={this.handleZipChange}/><br/>
+
+
+        <input type="submit" onClick={this.addRestaurant}/>
         </form>
       </div>
     );

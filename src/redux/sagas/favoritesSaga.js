@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeEvery } from 'redux-saga/effects';
 
 function* fetchFavorites(action){
     const id = action.payload
@@ -12,6 +12,8 @@ function* fetchFavorites(action){
     }
 }
 
+
+
 function* addToFavorites(action) {
     try {
       yield axios.post("/favorites", action.payload);
@@ -23,8 +25,8 @@ function* addToFavorites(action) {
 }
   
 function* favoritesSaga() {
-    yield takeLatest('FETCH_FAVORITES', fetchFavorites);
-    yield takeLatest('ADD_TO_FAVORITES', addToFavorites);
+    yield takeEvery('FETCH_FAVORITES', fetchFavorites);
+    yield takeEvery('ADD_TO_FAVORITES', addToFavorites);
 
 }
 

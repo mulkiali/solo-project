@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 
-//this component handles the search results,
-//the query for my search results is not final, I have not yet found out how to order them by closest estimated location
-//I need to add images to the restaurant database, as of right now the name is a button that takes the user to the details page
 
-class Welcome extends Component {
+class Search extends Component {
     state = {
         searchInput: ""
     };
@@ -36,6 +33,12 @@ handleClick1 = (id,) => {
   })
 }
 
+delete = (id,) => {
+  this.props.dispatch({
+   type: "DELETE_ITEM", payload: id
+  })
+}
+
 
 render() {
     return (
@@ -52,6 +55,8 @@ render() {
             <li key = {restaurant.id}>
             <button onClick={()=>this.handleClick(restaurant.id)}>{restaurant.name}</button>, {restaurant.description}
             <button onClick={()=>this.handleClick1(restaurant.id)}>Fave</button>
+            <button onClick={()=>this.delete(restaurant.id)}>Delete</button>
+
             </li>
           ))}
         </ul>
@@ -66,4 +71,4 @@ const mapStateToProps = state => ({
   
 
 
-export default connect(mapStateToProps)(Welcome);
+export default connect(mapStateToProps)(Search);
