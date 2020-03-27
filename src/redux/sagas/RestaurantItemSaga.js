@@ -13,6 +13,7 @@ function* fetchDetails(action){
     }
 }
 
+
 function* RestaurantItemSaga() {
     yield takeLatest('FETCH_DETAILS', fetchDetails);
 }

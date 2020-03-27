@@ -43,24 +43,24 @@ class App extends Component {
               path="/about"
               component={AboutPage}
             />
-              <Route
+              <ProtectedRoute
               exact
               path="/favorites"
               component={Favorites}
             />
-              <Route
+              <ProtectedRoute
               exact
               path="/item"
               component={RestaurantItem}
             />
              />
-              <Route
+              <ProtectedRoute
               exact
               path="/search"
               component={Search}
             />
               />
-              <Route
+              <ProtectedRoute
               exact
               path="/form"
               component={NewRestaurantForm}

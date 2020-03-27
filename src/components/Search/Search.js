@@ -22,20 +22,26 @@ trackSearchInput = event => {
 
 handleClick = (id,) => {
   this.props.dispatch({
-   type: "FETCH_DETAILS", payload: id
+   type: 'FETCH_DETAILS', payload: id
   })
 this.props.history.push('/item');
 }
 
 handleClick1 = (id,) => {
   this.props.dispatch({
-   type: "FETCH_FAVORITES", payload: id
+   type: 'FETCH_FAVORITES', payload: id
   })
 }
 
 delete = (id,) => {
   this.props.dispatch({
-   type: "DELETE_ITEM", payload: id
+   type: 'DELETE_ITEM', payload: id
+  })
+}
+
+edit = (id,) => {
+  this.props.dispatch({
+   type: 'UPDATE_ITEM', payload: id
   })
 }
 
@@ -56,6 +62,7 @@ render() {
             <button onClick={()=>this.handleClick(restaurant.id)}>{restaurant.name}</button>, {restaurant.description}
             <button onClick={()=>this.handleClick1(restaurant.id)}>Fave</button>
             <button onClick={()=>this.delete(restaurant.id)}>Delete</button>
+            <button onClick={()=>this.edit(restaurant.id)}>Delete</button>
 
             </li>
           ))}
