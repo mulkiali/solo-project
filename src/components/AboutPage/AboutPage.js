@@ -1,4 +1,7 @@
 import React from 'react';
+import '../Favorites/Favorites.css'
+
+
 
 // This is one of our simplest components
 // It doesn't have local state, so it can be a function component.
@@ -9,7 +12,7 @@ const AboutPage = () => (
   <div>
     <div>
       <p>
-        This about page is for anyone to read!
+        Find halal restaurants to visit in your area!
       </p>
     </div>
   </div>

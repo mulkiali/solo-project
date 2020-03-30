@@ -11,10 +11,11 @@ body {
 form {
     background-color: #dbd5d5;
     width: 30%;
-    height: 250px;
+    height: 350px;
     margin: 20px auto;
-    padding: 25px;
+    padding: 40px;
     border-radius: 2px;
+    text-align: center;
 }
 
 input {
@@ -22,19 +23,30 @@ input {
     margin-bottom: 10px;
 }
 
+form.login {
+    margin: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+
+}
+
 .log-in, .log-out, .register {
-  background-color: #00acb0;
+  background-color: rgb(243, 233, 233);
   border-radius: 4px;
   color: #f8f8f8;
   min-height: 50px;
   min-width: 100px;
   outline:0;
   cursor: pointer;
+  text-align: center;
+  
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  background-color:  rgb(237, 224, 240);
 }
+
+
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {

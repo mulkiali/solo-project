@@ -1,0 +1,24 @@
+div.list {
+    background-color: rgb(243, 233, 233);
+    height: 600px;
+    width: 600px;
+    overflow-y: scroll;
+    text-align: center;
+    margin-left: 300px;
+}
+
+div.body{
+    background-color:rgb(243, 233, 233);
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    list-style-position: outside;
+    list-style-image: element(image);
+}
+
+.imagebtn {
+    /* sets border width to 0 and border style to none */ 
+    border:0 none;
+}

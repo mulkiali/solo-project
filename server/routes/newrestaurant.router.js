@@ -4,10 +4,12 @@ const pool = require('../modules/pool');
 
 router.post('/', (req, res) => {
     const newRestaurant = req.body;
-    const queryText = `insert into restaurants ("name", "description") values ($1, $2);`;
+    console.log('newrestaurant req.body', req.body)
+    const queryText = `insert into restaurants ("name", "description", "image") values ($1, $2, $3);`;
     const queryValues = [
         newRestaurant.name,
-        newRestaurant.description
+        newRestaurant.description,
+        newRestaurant.image
     ];
     pool.query(queryText, queryValues)
       .then(() => {

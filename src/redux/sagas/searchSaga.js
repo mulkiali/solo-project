@@ -18,9 +18,19 @@ function* deleteRestaurant(action){
     }
 }
 
+function* editRestaurant(action){
+    try{
+        yield axios.put( `search/${action.payload.name}`, action.payload)
+        yield put({type:'FETCH_LIST'})
+    }catch (error){
+        console.log('error editing', error);
+    }
+}
+
 function* searchSaga() {
     yield takeLatest('FETCH_LIST', fetchList);
     yield takeLatest('DELETE_ITEM', deleteRestaurant);
+    yield takeLatest('EDIT_ITEM', editRestaurant);
 }
 
 export default searchSaga;
