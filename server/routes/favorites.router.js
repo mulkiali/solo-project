@@ -5,12 +5,13 @@ const pool = require('../modules/pool');
 
 router.get('/', (req, res) => {
   console.log('is authenticated?', req.isAuthenticated());
+  const user = req.user.id
     console.log('user', req.user);
     if(req.isAuthenticated()){
     let queryText = `SELECT restaurants.id, restaurants.name, restaurants.description, restaurants.image, favorites.visited FROM restaurants
     JOIN favorites ON favorites.restaurant_id = restaurants.id
-    JOIN "user" ON favorites.user_id = "user".id where favorites.user_id=${req.user.id}`;  
-    pool.query(queryText)
+    JOIN "user" ON favorites.user_id = "user".id where favorites.user_id=$1`;  
+    pool.query(queryText, [user])
     .then(results => res.send(results.rows))
     .catch(error => {
         console.log('Error making SELECT for results:', error);
@@ -42,8 +43,10 @@ router.post("/", (req, res) => {
 
 router.put('/:id', (req, res) => {
     console.log('params', req.params.id)
-    const queryText = `UPDATE "favorites" SET "visited" = ${req.body.visit} WHERE "restaurant_id" = ${req.params.id}`;
-    pool.query(queryText).then((result) => {
+    const visit = req.body.visit
+    const reqId = req.params.id
+    const queryText = `UPDATE "favorites" SET "visited" = $1 WHERE "restaurant_id" = $2`;
+    pool.query(queryText[visit, reqId]).then((result) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`Error in PUT ${error}`);
